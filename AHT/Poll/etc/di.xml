@@ -13,4 +13,10 @@
 			<argument name="resourceModel" xsi:type="string">AHT\Poll\Model\ResourceModel\Poll</argument>
 		</arguments>
 	</virtualType>	
+	<type name="Magento\Framework\Message\Manager">
+        <plugin name="Insert_text_before_message" type="AHT\Poll\Plugin\InsertText" sortOrder="10" disabled="false" />
+    </type>
+    <type name="Magento\ConfigurableProduct\Model\Product\Type\Configurable">
+        <plugin name="AHT_ChangeMessage_Configurable_Plugin" type="AHT\Poll\Plugin\EditMessage" sortOrder="20" disabled="false"/>
+    </type>
 </config>

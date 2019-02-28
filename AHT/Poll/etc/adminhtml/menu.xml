@@ -10,5 +10,7 @@
         <add id="AHT_Poll::poll_save"  title="Add New Poll" translate="dich" module="AHT_Poll" sortOrder="3" action="poll/index/add" resource="AHT_Poll::poll_save" parent="AHT_Poll::poll"/>
 
         <add id="AHT_Poll::pollanswer_save"  title="Add New Poll Answer" translate="dich" module="AHT_Poll" sortOrder="4" action="poll/index/addanswer" resource="AHT_Poll::pollanswer_save" parent="AHT_Poll::poll"/>
+
+        <add id="AHT_Poll::poll_configuration" title="Configuration" module="AHT_Poll" sortOrder="99" parent="AHT_Poll::poll" action="adminhtml/system_config/edit/section/poll" resource="AHT_Poll::poll_configuration"/> 
     </menu>
 </config>

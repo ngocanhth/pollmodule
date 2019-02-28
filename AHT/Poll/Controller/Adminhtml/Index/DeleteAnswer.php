@@ -25,6 +25,9 @@ class DeleteAnswer extends \Magento\Backend\App\Action{
 			$model=$this->_answerFactory->create();
 			$model->load($id);
 			if($model->getId()){
+
+				echo "string";	die();
+
 				$model->delete();
 				$this->messageManager->addSuccess(__("This answer has been deleted"));
 				return $this->_redirect('*/*/');
