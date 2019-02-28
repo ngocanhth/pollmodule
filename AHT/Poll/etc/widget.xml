@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:helloworld:Magento_Widget:etc/widget.xsd">
+	<widget class="AHT\Poll\Block\Widget\Poll\Poll" id="aht_poll_widget">
+		<label>Poll Widget</label>
+		<description>Display Poll Information</description>
+		<parameters>
+			<parameter name="polls" sort_order="10" visible="true" xsi:type="text">
+				<label translate="true">Custom Poll Label</label>
+			</parameter>
+			<parameter name="recordshow" sort_order="11" visible="true" xsi:type="text">
+				<label translate="true">Input Id Record to display</label>
+			</parameter>
+		</parameters>
+	</widget>
+</widgets>
+
+

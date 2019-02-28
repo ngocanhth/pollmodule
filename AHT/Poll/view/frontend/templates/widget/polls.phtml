@@ -1,0 +1,43 @@
+<?php 
+    $pollCollection = $block->showListPoll()->getData();
+    $recordrows=$this->getData("recordrows");
+    $pollLabel=$this->getData("polls");
+    if(isset($pollCollection)) : 
+?>
+
+<div class="block block-poll">
+    <div class="block-title">
+        <strong><h2><?php echo ('Community Poll');?></h2></strong>
+    </div>
+    <form id="pollForm" action="<?php echo $this->getUrl("poll/index/vote");?>" method="post">
+        <div class="block-content">
+
+     <?php foreach( $pollCollection as $poll ):?>
+            <?php  
+              $pollId = $poll["poll_id"];
+              $listPollAnswer = $block->getListPollAnswer($pollId)->getData(); 
+              $status = $poll["status"];
+            ?>
+            <?php if($listPollAnswer && $status ==1): ?>
+            <h3 class="block-subtitle"><?php echo $poll["poll_title"]; ?> </h3>
+            <ul id="poll-answers">
+                <?php foreach( $listPollAnswer as $pollAnswer ): ?>
+                <li>
+                    <input type="radio" name="<?php echo $pollId;?>" class="radio poll_vote" id="vote_<?php echo $pollAnswer["answer_id"]; ?>" value="<?php echo $pollAnswer["answer_id"]; ?>"/>
+                    <span class="label"><label for="vote_<?php echo $pollAnswer["answer_id"]; ?>"><?php echo $pollAnswer["answer_title"]; ?></label></span>
+                    <span class="vote-count"><?php $voteTotal = (int)$poll["votes_count"]; if($voteTotal==0){echo "0";} else echo round((int)$pollAnswer["votes_count"]/(int)$poll["votes_count"]*100, 2);?>%</span>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
+
+      <?php endforeach; ?>
+            <div class="actions">
+                <button id="vote" type="submit" title="Vote" class="button"><span><span><?php echo ('Vote'); ?></span></span></button>
+            </div>
+
+        </div>
+    </form>
+</div>
+<?php endif; ?>
+

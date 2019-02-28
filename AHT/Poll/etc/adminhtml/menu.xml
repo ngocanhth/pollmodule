@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="AHT_Poll::poll"  title="Poll Manager" translate="dich" module="AHT_Poll" sortOrder="8" action="poll" resource="AHT_Poll::poll"/>
+        
+        <add id="AHT_Poll::poll_list"  title="List all Poll" translate="dich" module="AHT_Poll" sortOrder="1" action="poll/index" resource="AHT_Poll::poll" parent="AHT_Poll::poll"/>
+
+        <add id="AHT_Poll::poll_answer_list"  title="List all Answers" translate="dich" module="AHT_Poll" sortOrder="2" action="poll/index/answer" resource="AHT_Poll::poll" parent="AHT_Poll::poll"/>
+
+        <add id="AHT_Poll::poll_save"  title="Add New Poll" translate="dich" module="AHT_Poll" sortOrder="3" action="poll/index/add" resource="AHT_Poll::poll_save" parent="AHT_Poll::poll"/>
+
+        <add id="AHT_Poll::pollanswer_save"  title="Add New Poll Answer" translate="dich" module="AHT_Poll" sortOrder="4" action="poll/index/addanswer" resource="AHT_Poll::pollanswer_save" parent="AHT_Poll::poll"/>
+    </menu>
+</config>

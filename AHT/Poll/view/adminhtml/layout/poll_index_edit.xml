@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configur
+ation.xsd">
+	<update handle="editor" />
+	<body>
+		<referenceContainer name="content">
+			<block class="AHT\Poll\Block\Adminhtml\Poll\Edit" name="AHT_Poll.edit" />
+ 		</referenceContainer>
+	</body>
+</page>

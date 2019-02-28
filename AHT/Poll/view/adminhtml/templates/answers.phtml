@@ -1,0 +1,37 @@
+
+<?php 
+	$request=$this->getRequest();
+    $pollId = $request->getParam("id");
+    $poll= $block->getPollId($pollId);
+?>
+
+<h1>Danh sách câu hỏi khảo sát</h1>
+<h3><?php echo $poll["poll_title"];?></h3>
+<table>
+	<tr>
+		<th>STT</th>
+		<th>Answer Lists</th>
+		<th>STT</th>
+		<th>STT</th>
+		<th>Action</th>
+<?php 
+ 	$listAnswers= $block->getListPollAnswer($pollId)->getData();
+?>
+<?php foreach( $listAnswers as $answer ): $i=1;
+ $action = $this->getUrl("poll/index/addanswer", ['poll_id' => $pollId,'answer_id' =>  $answer["answer_id"]]);
+ $actionDelete = $this->getUrl("poll/index/deleteanswer",  ['poll_id' => $pollId,'answer_id' =>  $answer["answer_id"]]);
+
+ ?>
+	</tr>
+		<tr>
+		<td><?php echo $i;?></td>
+		<td><?php echo $answer["answer_title"];?></td>
+		<td><?php echo $i;?></td>
+		<td><?php echo $i;?></td>
+		<td> 
+			<a href="<?php echo $action;?>">Edit</a>
+			<a href="<?php echo $actionDelete;?>">Delete</a>
+		</td>
+	</tr>
+  <?php $i++; endforeach; ?>
+</table>
