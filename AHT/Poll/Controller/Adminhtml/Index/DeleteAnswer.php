@@ -22,13 +22,34 @@ class DeleteAnswer extends \Magento\Backend\App\Action{
 		$pollId = $this->getRequest()->getParam('poll_id');
 		$pollModel=$this->_pollFactory->create()->load($pollId);
 		if($id){
-			$model=$this->_answerFactory->create();
-			$model->load($id);
-			if($model->getId()){
+			$answerModel=$this->_answerFactory->create();
+		
+			$listAnswers = $answerModel->getCollection()->addFieldToFilter('poll_id', $pollId);
+					$voteTotal=0;
+				foreach ($listAnswers as $answer) {
+					$voteTotal += $answer["votes_count"];
+				}
 
-				echo "string";	die();
+		//		var_dump($voteTotal);die();
+				$answerModel->load($id);
+				$vote_old = $answerModel->getData("votes_count");
+	//var_dump($vote_old);die();
+				$votes_count_total = (int)$voteTotal - (int)$vote_old;
+//	var_dump($votes_count_total);die();
+				$pollModel->addData([
+					"votes_count" => $votes_count_total 
+				]);
 
-				$model->delete();
+				$pollModel->save();
+
+
+
+		
+			if($answerModel->getId()){
+				$answerModel->delete();
+
+				
+
 				$this->messageManager->addSuccess(__("This answer has been deleted"));
 				return $this->_redirect('*/*/');
 			}else{

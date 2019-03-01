@@ -14,7 +14,6 @@ class InsertText extends \Magento\Framework\App\Helper\AbstractHelper{
     return $result.' ';
   }
 
-
   public function beforeaddSuccessMessage($subject, $message){
     $message = $this->getConfig().$message;
     return $message;
